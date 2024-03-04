@@ -4,3 +4,8 @@
     object-fit: contain;    
     /* object-fit: cover;  might work too  */
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+  }
