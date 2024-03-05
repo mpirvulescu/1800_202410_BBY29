@@ -12,12 +12,12 @@
 
 
   
-.card\ h-100:visited{
+.cardLink:visited{
     color: inherit;
     text-decoration: none;
 }
 
-.card\ h-100:link{
+.cardLink:link{
     color: inherit;
     text-decoration: none;
 }
