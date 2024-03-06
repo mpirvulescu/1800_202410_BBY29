@@ -8168,7 +8168,7 @@
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
-    color: #7e0cf5; }
+    color: #28A745; }
     a:hover, a:focus {
       text-decoration: none !important;
       outline: none !important;
@@ -8183,7 +8183,7 @@
     color: #000; }
   
   .bg-primary {
-    background: #7e0cf5 !important; }
+    background: #28A745 !important; }
   
   .ftco-section {
     padding: 7em 0; }
@@ -8211,14 +8211,13 @@
     height: 500px;
     position: relative;
     margin: 20px auto;
-    background: #7e0cf5; }
+    background: #28A745; }
   
   /*  Events display */
   .events-container {
     overflow-y: scroll;
-    height: 100%;
+    height: fit-content;
     width: 50%;
-    float: right;
     margin: 0px auto;
     display: inline-block;
     padding: 0px;
@@ -8249,13 +8248,20 @@
         margin: 0;
         background: #e6e6e6; } }
   
-  .event-count, .event-name, .event-cancelled {
+  .event-count, .event-name, .event-cancelled, .event-delete {
     display: inline;
     padding: 0 10px;
     font-size: 1rem; }
+
+    .event-delete:hover{
+      border-radius: 5px;
+      background-color: gray;
+      padding: 10px;
+      display: inline;
+    }
   
   .event-count {
-    color: #7e0cf5;
+    color: #28A745;
     text-align: right; }
   
   .event-name {
@@ -8276,7 +8282,7 @@
     font: 13px Helvetica, Arial, san-serif;
     display: inline-block;
     padding: 20px;
-    float: left; }
+  }
     @media (max-width: 991.98px) {
       .calendar-container {
         padding: 0; } }
@@ -8324,7 +8330,7 @@
         -o-transition: none;
         transition: none; } }
     .left-button:hover, .right-button:hover {
-      color: #7e0cf5 !important; }
+      color: #28A745 !important; }
   
   .left-button {
     left: 0; }
@@ -8348,9 +8354,9 @@
     transition: .2s ease all;
     color: white;
     border: none;
-    background: #7e0cf5; }
+    background: #28A745; }
     .button.button-white {
-      background: #fff;
+      background: #a4ff5e;
       color: #000; }
     .button:focus {
       -webkit-box-shadow: none;
@@ -8358,7 +8364,9 @@
       outline: none; }
   
   #cancel-button {
-    background: #cd4dcc; }
+    background: white;
+    color: #000;
+  }
   
   #add-button {
     display: block;
@@ -8436,11 +8444,11 @@
     position: relative; }
   
   .table-date:not(.nil):hover {
-    border-color: #cd4dcc; }
+    border-color: #a4ff5e; }
   
   .event-date {
-    border-color: #7e0cf5;
-    background: #7e0cf5;
+    border-color: #28A745;
+    background: #28A745;
     color: #fff; }
     .event-date:after {
       position: absolute;
@@ -8450,14 +8458,14 @@
       height: 10px;
       border-radius: 50%;
       content: '';
-      background: #28a745; }
+      background: #a4ff5e; }
   
   .active-date {
-    background: #cd4dcc;
+    background: #a4ff5e;
     color: #fff; }
   
   .event-date.active-date {
-    background: #7e0cf5; }
+    background: #28A745; }
   
   /* input dialog */
   .dialog {
@@ -8480,7 +8488,7 @@
     font-size: 28px; }
   
   .form-container {
-    margin-top: 25%; }
+    margin: 25% 5% 0 5%; }
   
   .form-label {
     text-transform: uppercase;
