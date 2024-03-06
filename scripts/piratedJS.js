@@ -192,52 +192,19 @@ function show_events(events, month, day) {
             var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
             var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Hour(s)</div>");
-            var event_delete = $("<div class='event-delete'>"+"Delete</div>");
+            var event_timer = $("<div class='event-timer'><a href='study-timer.html'>"+"Go to timer</a></div>");
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
                 event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(event_count).append(event_delete);
+            $(event_card).append(event_name).append(event_count).append(event_timer);
             $(".events-container").append(event_card);
         }
     }
 }
 
-function delete_event(event_card, event_name, event_delete) {
-    // Clear the dates container
-    $(".events-container").empty();
-    $(".events-container").show(250);
-    console.log(event_data["events"]);
-    // If there are no events for this date, notify the user
-    $(event_card).remove(event_name).remove(event_count).remove(event_delete);
-
-    if(events.length===0) {
-        var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
-        $(event_card).css({ "border-left": "10px solid #FF1744" });
-        $(event_card).append(event_name);
-        $(".events-container").append(event_card);
-    }
-    else {
-        // Go through and add each event as a card to the events container
-        for(var i=0; i<events.length; i++) {
-            var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Hour(s)</div>");
-            var event_delete = $("<div class='event-delete'>"+"Delete</div>");
-            if(events[i]["cancelled"]===true) {
-                $(event_card).css({
-                    "border-left": "10px solid #FF1744"
-                });
-                event_count = $("<div class='event-cancelled'>Cancelled</div>");
-            }
-            $(event_card).append(event_name).append(event_count).append(event_delete);
-            $(".events-container").append(event_card);
-        }
-    }
-}
 
 // Checks if a specific date has any events
 function check_events(day, month, year) {
