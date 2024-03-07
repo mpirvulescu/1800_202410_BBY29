@@ -8248,12 +8248,12 @@
         margin: 0;
         background: #e6e6e6; } }
   
-  .event-count, .event-name, .event-cancelled, .event-delete {
+  .event-count, .event-name, .event-cancelled, .event-timer {
     display: inline;
     padding: 0 10px;
     font-size: 1rem; }
 
-    .event-delete:hover{
+    .event-timer:hover{
       border-radius: 5px;
       background-color: gray;
       padding: 10px;
@@ -8516,4 +8516,12 @@
   
   .error-input {
     border-color: #cd4dcc; }
+  
+
+  .go-to-Graph{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   
