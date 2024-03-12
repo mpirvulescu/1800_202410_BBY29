@@ -19,7 +19,20 @@ startBtn.addEventListener('click', function () {
 stopBtn.addEventListener('click', function () {
     clearInterval(timer);
     timer = null; // Reset timer variable
+
+    const totalMinutes = (hour * 60) + minute + (second / 60);
+    sendTime(totalMinutes);
 });
+
+function sendTime(totalMinutes) {
+    db.collection('Study Timer').doc('Recorded Time').set({
+        timer: totalMinutes
+    }) .then(() => {
+        console.log("Time recorded successfully in Firestore");
+    }) .catch((error) => {
+        console.error("Error sending recorded time to Firestore");
+    });
+}
 
 resetBtn.addEventListener('click', function () {
     clearInterval(timer);
