@@ -43,6 +43,7 @@ users
 function addEvent() {
     //define a variable for the collection you want to create in Firestore to populate data
     var eventRef = db.collection("Calendar");
+    var userRef = db.collection("users");
     let minEventId = 0;
 
     eventRef.get().then((querySnapshot) => {
@@ -56,48 +57,49 @@ function addEvent() {
         console.log("Smallest ID for event_id: ", minEventId);
     })
 
-    let user = ;
+    let userName = document.getElementById("nav-user-name").textContent;
+    let taskName = document.getElementById("name").value;
+    let taskHour = document.getElementById("count").value;
 
-    eventRef.add({
-        event_id: minEventId,
-        hour: ;
-        name: ;
-        uid: ;
-        user: ;
+    userRef.get().then((querySnapshot) => {
+        const uidSelect = "";
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            let user = data.name;
+            let uid = data.uid;
+            if (userName == user){
+                uidSelect = uid;
+            }
+        })
     })
 
     eventRef.add({
-        event_id: 1,
-        name: "Burnaby Lake Park Trail", //replace with your own city?
-        city: "Burnaby",
-        province: "BC",
-        level: "easy",
-				details: "A lovely place for lunch walk",
-        length: 10,          //number value
-        hike_time: 60,       //number value
-        lat: 49.2467097082573,
-        lng: -122.9187029619698,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+        event_id: minEventId,
+        hour: taskHour,
+        name: taskName,
+        uid: uidSelect,
+        user: userName,
     });
 }
+document.getElementById("ok-button").addEventListener("click", function() {
+    addEvent();
+    console.log("ok button clicked!");
+});
 
 
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
-function displayEventOnCalendar(collection) {
-    let eventDate = document.getElementById("hikeCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+function loadEvent(collection) {
+    let eventDate = document.getElementById("calendar-div");
 
     db.collection(collection).get()   //the collection called "hikes"
-        .then(allHikes=> {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allHikes.forEach(doc => { //iterate thru each doc
-                var title = doc.data().name;       // get value of the "name" key
-                var details = doc.data().details;  // get value of the "details" key
-								var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-                var hikeLength = doc.data().length; //gets the length field
-                let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
-
+        .then(allEvents => {
+            
+            allEvents.forEach(doc => { //iterate thru each doc
+                var event_id = doc.data().event_id;
+                var hour = doc.data().hour;
+				var name = doc.data().name;
+                var uid = doc.data().uid;
+                let user = doc.data().user;
+                
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
@@ -117,4 +119,4 @@ function displayEventOnCalendar(collection) {
         })
 }
 
-displayCardsDynamically("hikes");  //input param is the name of the collection
+loadEvent("Calendar");  //input param is the name of the collection
