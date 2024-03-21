@@ -40,76 +40,44 @@ users
         ojgUjs9MIFbRX1V9n6wS3aMYdf03
 */
 
-function addEvent() {
-    //define a variable for the collection you want to create in Firestore to populate data
-    var eventRef = db.collection("Calendar");
-    var userRef = db.collection("users");
-    let minEventId = 0;
-
-    eventRef.get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const id = data.event_id;
-            if (id === minEventId){
-                minEventId++;
-            }
-        });
-        console.log("Smallest ID for event_id: ", minEventId);
-    })
-
-    let userName = document.getElementById("nav-user-name").textContent;
-    let taskName = document.getElementById("name").value;
-    let taskHour = document.getElementById("count").value;
-
-    userRef.get().then((querySnapshot) => {
-        const uidSelect = "";
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            let user = data.name;
-            let uid = data.uid;
-            if (userName == user){
-                uidSelect = uid;
-            }
-        })
-    })
-
-    eventRef.add({
-        event_id: minEventId,
-        hour: taskHour,
-        name: taskName,
-        uid: uidSelect,
-        user: userName,
-    });
-}
-document.getElementById("ok-button").addEventListener("click", function() {
-    addEvent();
-    console.log("ok button clicked!");
-});
-
-
-function loadEvent(collection) {
+function loadEvent() {
     let eventDate = document.getElementById("calendar-div");
+    let userName = document.getElementById("nav-user-name").value;
+    let uidNav = "";
 
-    db.collection(collection).get()   //the collection called "hikes"
-        .then(allEvents => {
-            
+    db.collection("users").get()
+        .then(allEvents=>{
+            console.log(userName)
+            allEvents.forEach(doc => {
+                let name = doc.data().name;
+                let uid = doc.data().uid;
+                if (name == userName){
+                    uidNav = uid;
+                    console.log(uidNav);
+                }
+            })
+        }
+    );
+    
+
+    db.collection("Calendar").get()   //the collection called "hikes"
+        .then(allEvents => {            
             allEvents.forEach(doc => { //iterate thru each doc
-                var event_id = doc.data().event_id;
-                var hour = doc.data().hour;
-				var name = doc.data().name;
-                var uid = doc.data().uid;
-                let user = doc.data().user;
-                
+                if (doc.data().uid === uidNav){    
+                    var date = doc.data().date;
+                    var event_id = doc.data().event_id;
+                    var hour = doc.data().hour;
+                    var name = doc.data().name;
+                    var uid = doc.data().uid;
+                    var user = doc.data().user;
+                    console.log(date + ", " + event_id + ", " + hour  + ", " + name  + ", " + uid + ", " + user);
+                }
+
                 //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
                 newcard.querySelector('.card-text').innerHTML = details;
                 newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
-
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
                 //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newcard);
@@ -119,4 +87,4 @@ function loadEvent(collection) {
         })
 }
 
-loadEvent("Calendar");  //input param is the name of the collection
+loadEvent();  //input param is the name of the collection
