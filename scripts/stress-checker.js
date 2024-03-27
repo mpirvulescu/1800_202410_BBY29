@@ -45,14 +45,25 @@ function stressScore() {
         name: user.displayName,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       }).then(() => {
-        window.location.href = "stress-level-checked.html";
+        if(sum < 4){
+          window.location.href = "stress-lowStress.html"
+        } else if(sum >= 4 && sum < 7){
+          window.location.href = "stress-medStress.html"
+        } else if(sum >= 7){
+          window.location.href = "stress-highStress.html"
+        } else {
+          window.location.href = "stress-level-checked.html";
+        }
       }).catch((error) => {
         console.error("Error adding document: ", error);
       });
-    } else {                                                            // use this else statement code for when users are not logged in!
+    } else {// use this else statement code for when users are not logged in!
       console.log("No user is signed in");
       window.location.href = 'index.html';
     }
   });
 }
 stressScore();
+
+
+
