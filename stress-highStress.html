@@ -47,7 +47,7 @@
 
   <div class="container-fluid bg-light text-dark p-5">
     <div class="container bg-light p-5">
-      <h1 class="display-4">Stress Checker</h1>
+      <h1 class="display-4">What's your Stress?</h1>
     </div>
   </div>
 
@@ -59,17 +59,28 @@
 
   <div class="container">
     <div class="row row-cols-3 row-cols-md-1 g-4">
-        <h1 class="display-6">How Stressed are You Feeling?</h1>
-            <label for="input1" class="form-label">Example range</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="input1">
-        <h1 class="display-6">How Stressed are You Feeling?</h1>
-            <label for="input2" class="form-label">Example range</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="input2">
-        <h1 class="display-6">How Stressed are You Feeling?</h1>
-            <label for="input3" class="form-label">Example range</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="input3">
+      <h1 class="display-6">You Are Feeling...</h1>
+      <p class="lead">
+        High levels of stress.  
+      </p>
+      <p class="lead">
+        Remember that prolonged stress can lead to worsening conditions, like anxiety and
+        depression.
+      </p>
+      <p class="lead">
+        Would you like to be recommended some exercises to help ease your stress?
+      </p>
+    <br>
+    <br>
     </div>
-    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+      <a href="activities-recommended-high.html">
+        <button type="submit" class="btn btn-primary">Let's Do It!</button>
+      </a>
+      <br>
+      <br>
+      <a href="main.html">
+        <button type="submit" class="btn btn-primary">I'm not up for it yet</button>
+      </a>
   </div>
 
   <!-- our own footer goes here-->
@@ -80,11 +91,7 @@
   <!---------------------------------------------->
 
   <!-- Link to scripts of your own -->
-  <script src="./scripts/script.js"></script>
-
-
-
-  <script src="./scripts/stress-checker.js"></script>
+  <!-- <script src="./scripts/script.js"></script> -->
   <script src="./scripts/firebaseAPI_BBY29.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/main.js"></script>
