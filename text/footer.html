@@ -1,13 +1,46 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2024 BCIT COMP1800</p>
-    <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap" />
-    </svg>
-    <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
+<footer class="navbar navbar-expand-lg navbar-dark bg-success sticky-bottom">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" id="nav-user-name"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="aboutus.html">About Us</a>
+                </li>
+            </ul>
+            <img src="images/instagram_733614.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <img src="images/facebook_739237.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <img src="images/twitter_733635.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        </div>
+    </div>
 </footer>
+
+<script>
+    function navUserName() {
+        firebase.auth().onAuthStateChanged(user => {
+            // Check if a user is signed in:
+            if (user) {
+                userName = user.displayName;
+
+                //method #1:  insert with JS
+                document.getElementById("nav-user-name").innerText = userName;
+
+                //method #2:  insert using jquery
+                //$("#name-goes-here").text(userName); //using jquery
+
+                //method #3:  insert using querySelector
+                //document.querySelector("#name-goes-here").innerText = userName
+
+            } else {
+                // No user is signed in.
+                console.log("No user is logged in");
+            }
+        });
+    }
+    navUserName(); //run the function
+</script>
