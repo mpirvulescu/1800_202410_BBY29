@@ -5,7 +5,8 @@ function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("activitiesTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
     console.log("function called");
     db.collection(collection)
-        .where("stress-score", ">=", 10)
+        .where("stress-score", "<=", 9)
+        .where("stress-score", ">", 4)
         .limit(3)
         .get()   //the collection called "hikes"
         .then(allActivities => {
@@ -28,9 +29,8 @@ function displayCardsDynamically(collection) {
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
                 //i++;   //Optional: iterate variable to serve as unique ID
-               
             })
-            doneButton(); 
+            doneButton();
         })
 }
 
@@ -50,10 +50,10 @@ function doneButton() {
             console.log("button disabled");
 
             if (counter == 3) {
-                localStorage.setItem('done', true);
                 window.location.href = "done.html"
             }
         });
     });
 
 }
+
