@@ -36,7 +36,7 @@ function stressScore() {
   
     const sum = input1 + input2 + input3;
     console.log(sum);
-
+    
     var user = firebase.auth().currentUser;
     if (user) {
       db.collection("StressChecker").add({
