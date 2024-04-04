@@ -39,7 +39,7 @@ function stressScore() {
       }).catch((error) => {
         console.error("Error adding document: ", error);
       });
-    } else {// use this else statement code for when users are not logged in!
+    } else {    // use this else statement code for when users are not logged in!
       console.log("No user is signed in");
       window.location.href = 'index.html';
     }
