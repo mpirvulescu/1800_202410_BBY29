@@ -1,3 +1,4 @@
+<!-- This is the footer -->
 <footer class="navbar navbar-expand-lg navbar-dark bg-success sticky-bottom">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -21,20 +22,15 @@
 </footer>
 
 <script>
+    // The function that displays the user's name in the footer
     function navUserName() {
         firebase.auth().onAuthStateChanged(user => {
             // Check if a user is signed in:
             if (user) {
                 userName = user.displayName;
 
-                //method #1:  insert with JS
+                //insert with JS
                 document.getElementById("nav-user-name").innerText = userName;
-
-                //method #2:  insert using jquery
-                //$("#name-goes-here").text(userName); //using jquery
-
-                //method #3:  insert using querySelector
-                //document.querySelector("#name-goes-here").innerText = userName
 
             } else {
                 // No user is signed in.
@@ -42,5 +38,5 @@
             }
         });
     }
-    navUserName(); //run the function
+    navUserName(); // run the function
 </script>
