@@ -49,6 +49,7 @@ function doneButton() {
             console.log("button disabled");
 
             if (counter == 3) {
+                localStorage.setItem('done', true);
                 window.location.href = "done.html"
             }
         });
