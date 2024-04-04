@@ -28,22 +28,3 @@
     </div>
   </div>
 </nav>
-
-<script>
-  function navUserName() {
-    firebase.auth().onAuthStateChanged(user => {
-      // Check if a user is signed in:
-      if (user) {
-        userName = user.displayName;
-
-        // insert with JS
-        document.getElementById("nav-user-name").innerText = userName;
-
-      } else {
-        // No user is signed in.
-        console.log("No user is logged in");
-      }
-    });
-  }
-  navUserName(); //run the function
-</script>
