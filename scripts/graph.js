@@ -1,27 +1,3 @@
-// let ctx = document.getElementById("myChart").getContext("2d");
-// let myChart = new Chart(ctx, {
-//     type: "line",
-//     data: {
-//         labels: [
-//             "Monday",
-//             "Tuesday",
-//             "Wednesday",
-//             "Thursday",
-//             "Friday",
-//             "Saturday",
-//             "Sunday",
-//         ],
-//         datasets: [
-//             {
-//                 label: "work load",
-//                 data: [
-//                     2, 9, 3, 17, 6, 3, 7],
-//                 backgroundColor: "rgba(153,205,1,0.6)",
-//             },
-//         ],
-//     },
-// });
-
 function loadChart() {
     let chartDiv = document.getElementById("myChart");
     firebase.auth().onAuthStateChanged(user => {
@@ -39,7 +15,7 @@ function loadChart() {
                         if (user.uid == doc.data().userID) {
                             datas.push(doc.data().score);
                             let date = new Date(doc.data().timestamp.seconds * 1000);
-                            dates.push(date.getDate() + "/" + date.toLocaleString('default', {month: 'short'}));
+                            dates.push(date.getDate() + "/" + date.toLocaleString('default', { month: 'short' }));
                         }
                     });
                     console.log(dates[0]);

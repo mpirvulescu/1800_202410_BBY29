@@ -1,26 +1,29 @@
 
 function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("activitiesTemplate"); 
+    let cardTemplate = document.getElementById("activitiesTemplate");
     console.log("function called");
     db.collection(collection)
         .where("stress-score", ">=", 10)
         .limit(3)
-        .get()   
+        .get()
         .then(allActivities => {
-            allActivities.forEach(doc => { 
-                var title = doc.data().name;       
-                var details = doc.data().details;  
-                let newcard = cardTemplate.content.cloneNode(true); 
+            allActivities.forEach(doc => {
+                var title = doc.data().name;
+                var details = doc.data().details;
+                let newcard = cardTemplate.content.cloneNode(true);
 
+                //update title and text and image
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-text').innerHTML = details;
-                document.getElementById(collection + "-go-here").appendChild(newcard);
+
+                //collection data into html
+                document.getElementById(collection + "-go-here").appendChild(newcard);               
             })
             doneButton(); 
         })
 }
 
-displayCardsDynamically("activities");  //input param is the name of the collection
+displayCardsDynamically("activities");
 
 var counter = 0;
 
