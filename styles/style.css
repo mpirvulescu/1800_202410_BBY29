@@ -4,10 +4,12 @@ html{
 }
 body {
   display: auto;
+  background-color: rgba(248, 249, 250, 1)
 }
 
-img{
-  height: 100%;
+#thumb {
+  width: 100%;
+  height: auto;
 }
 
 .extra{
