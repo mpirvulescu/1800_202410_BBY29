@@ -1,3 +1,5 @@
+//This is a copied bootstrap from internet for functions and behaviour of calendar
+
 (function($) {
 
 	"use strict";

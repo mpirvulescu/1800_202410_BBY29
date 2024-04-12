@@ -1,3 +1,6 @@
+//This js was planned to submit an event info to firebase collection
+//It works but not used in MVP
+
 function addEvent() {
     //define a variable for the collection you want to create in Firestore to populate data
     var eventRef = db.collection("Calendar");
