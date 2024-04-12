@@ -76,6 +76,10 @@ Content of the project folder:
 └── study-timer.html
 
 It has the following subfolders and files:
+├── .firebase                       # Folder for Firebase hosted
+    /hosting..cache                 # Cache holding our firebase hosting
+├── .vscode                         # Folder for VS Code
+    setting.json                    # Associated with VS Code
 ├── .git                            # Folder for git repo
 ├── images                          # Folder for images
     /956860-200.png                 # Source: Google
