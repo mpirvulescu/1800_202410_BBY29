@@ -9,7 +9,7 @@ function loadChart() {
 
             //check collection StressChecker in most recent order
             db.collection("StressChecker")
-                .orderBy("timestamp").get()
+                .orderBy("timestamp").get()     // Firestore query by timestamp
                 .then(stress => {
                     var datas = [];
                     var dates = [];
