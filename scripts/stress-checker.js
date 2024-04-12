@@ -1,14 +1,16 @@
 
+// Function to save the stress score sum into local storage - this was not used in the MVP
 function saveStressScore(sum) {
   console.log(sum);
   console.log("function called");
   localStorage.setItem('stress-score', sum);
-  // window.location.href = 'stress-level-checked.html';
 }
 
+// Function to evaluate the stress score for the stress checker app
 function stressScore() {
   console.log("function called!");
 
+  // Retrieves value of each question and sums the values
   document.getElementById('submit').addEventListener('click', function () {
     const input1 = Number(document.getElementById('input1').value);
     const input2 = Number(document.getElementById('input2').value);
@@ -27,7 +29,8 @@ function stressScore() {
         name: user.displayName,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       }).then(() => {
-        if (sum < 4) {
+        // Redirection to the correct page depending on the stress score
+        if (sum < 4) {                        
           window.location.href = "stress-lowStress.html"
         } else if (sum >= 5 && sum < 10) {
           window.location.href = "stress-medStress.html"

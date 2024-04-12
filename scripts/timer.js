@@ -24,6 +24,7 @@ stopBtn.addEventListener('click', function () {
     sendTime(totalMinutes);
 });
 
+// Write to Firebase the total accumulated minutes 
 function sendTime(totalMinutes) {
     db.collection('Study Timer').doc('Recorded Time').set({
         timer: totalMinutes
