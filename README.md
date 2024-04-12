@@ -2,7 +2,8 @@
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application to ... 
+
+A stress management app that will track user progress over time to schedule stress management activities and develop simple progress reports to help manage students’ stress.
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
