@@ -6,7 +6,7 @@ function loadChart() {
             currentUser = db.collection("users").doc(user.uid);
 
             db.collection("StressChecker")
-                .orderBy("timestamp").get()
+                .orderBy("timestamp").get()     // Firestore query by timestamp
                 .then(stress => {
                     var datas = [];
                     var dates = [];
