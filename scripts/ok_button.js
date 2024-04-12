@@ -18,10 +18,12 @@ function addEvent() {
         console.log("Smallest ID for event_id: ", minEventId);
     })
 
+    //variable to spot contents in each html part
     let userName = document.getElementById("nav-user-name").textContent;
     let taskName = document.getElementById("name").value;
     let taskHour = document.getElementById("count").value;
 
+    //check collection's every data by loop
     userRef.get().then((querySnapshot) => {
         const uidSelect = "";
         querySnapshot.forEach((doc) => {
@@ -34,6 +36,7 @@ function addEvent() {
         })
     })
 
+    //then push collected data from html to firebase collection as described attributes
     eventRef.add({
         event_id: minEventId,
         hour: taskHour,
@@ -42,6 +45,8 @@ function addEvent() {
         user: userName,
     });
 }
+
+//trigger above function when this button is clicked
 document.getElementById("ok-button").addEventListener("click", function() {
     addEvent();
     console.log("ok button clicked!");
